@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.example.org/automotive-ontology#"
+     xml:base="http://www.example.org/automotive-ontology"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+    <owl:Ontology rdf:about="http://www.example.org/automotive-ontology"/>
+
+    <!-- Classes -->
+    <owl:Class rdf:about="#AutomotiveSystem"/>
+    <owl:Class rdf:about="#VehicleComponent">
+        <rdfs:subClassOf rdf:resource="#AutomotiveSystem"/>
+    </owl:Class>
+    <owl:Class rdf:about="#ManufacturingProcess">
+        <rdfs:subClassOf rdf:resource="#AutomotiveSystem"/>
+    </owl:Class>
+    <owl:Class rdf:about="#QualityAssurance">
+        <rdfs:subClassOf rdf:resource="#AutomotiveSystem"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Regulation">
+        <rdfs:subClassOf rdf:resource="#AutomotiveSystem"/>
+    </owl:Class>
+    <owl:Class rdf:about="#MaintenancePolicy">
+        <rdfs:subClassOf rdf:resource="#AutomotiveSystem"/>
+    </owl:Class>
+
+    <!-- VehicleComponent subclasses -->
+    <owl:Class rdf:about="#EngineSystem">
+        <rdfs:subClassOf rdf:resource="#VehicleComponent"/>
+    </owl:Class>
+    <owl:Class rdf:about="#BrakingSystem">
+        <rdfs:subClassOf rdf:resource="#VehicleComponent"/>
+    </owl:Class>
+    <owl:Class rdf:about="#SuspensionSystem">
+        <rdfs:subClassOf rdf:resource="#VehicleComponent"/>
+    </owl:Class>
+    <owl:Class rdf:about="#ElectricalSystem">
+        <rdfs:subClassOf rdf:resource="#VehicleComponent"/>
+    </owl:Class>
+    <owl:Class rdf:about="#TransmissionSystem">
+        <rdfs:subClassOf rdf:resource="#VehicleComponent"/>
+    </owl:Class>
+
+    <!-- ManufacturingProcess subclasses -->
+    <owl:Class rdf:about="#Welding">
+        <rdfs:subClassOf rdf:resource="#ManufacturingProcess"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Painting">
+        <rdfs:subClassOf rdf:resource="#ManufacturingProcess"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Assembly">
+        <rdfs:subClassOf rdf:resource="#ManufacturingProcess"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Inspection">
+        <rdfs:subClassOf rdf:resource="#ManufacturingProcess"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Casting">
+        <rdfs:subClassOf rdf:resource="#ManufacturingProcess"/>
+    </owl:Class>
+
+    <!-- QualityAssurance subclasses -->
+    <owl:Class rdf:about="#Testing">
+        <rdfs:subClassOf rdf:resource="#QualityAssurance"/>
+    </owl:Class>
+    <owl:Class rdf:about="#DefectDetection">
+        <rdfs:subClassOf rdf:resource="#QualityAssurance"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Certification">
+        <rdfs:subClassOf rdf:resource="#QualityAssurance"/>
+    </owl:Class>
+    <owl:Class rdf:about="#CrashTesting">
+        <rdfs:subClassOf rdf:resource="#Testing"/>
+    </owl:Class>
+    <owl:Class rdf:about="#EmissionTesting">
+        <rdfs:subClassOf rdf:resource="#Testing"/>
+    </owl:Class>
+    <owl:Class rdf:about="#DurabilityTesting">
+        <rdfs:subClassOf rdf:resource="#Testing"/>
+    </owl:Class>
+
+    <!-- Regulation subclasses -->
+    <owl:Class rdf:about="#SafetyStandards">
+        <rdfs:subClassOf rdf:resource="#Regulation"/>
+    </owl:Class>
+    <owl:Class rdf:about="#ManufacturingStandards">
+        <rdfs:subClassOf rdf:resource="#Regulation"/>
+    </owl:Class>
+    <owl:Class rdf:about="#EnvironmentalRegulations">
+        <rdfs:subClassOf rdf:resource="#Regulation"/>
+    </owl:Class>
+
+    <!-- MaintenancePolicy subclasses -->
+    <owl:Class rdf:about="#ScheduledMaintenance">
+        <rdfs:subClassOf rdf:resource="#MaintenancePolicy"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Repair">
+        <rdfs:subClassOf rdf:resource="#MaintenancePolicy"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Replacement">
+        <rdfs:subClassOf rdf:resource="#MaintenancePolicy"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Monitoring">
+        <rdfs:subClassOf rdf:resource="#MaintenancePolicy"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="#hasComponent">
+        <rdfs:domain rdf:resource="#AutomotiveSystem"/>
+        <rdfs:range rdf:resource="#VehicleComponent"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#usesProcess">
+        <rdfs:domain rdf:resource="#VehicleComponent"/>
+        <rdfs:range rdf:resource="#ManufacturingProcess"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#testedBy">
+        <rdfs:domain rdf:resource="#VehicleComponent"/>
+        <rdfs:range rdf:resource="#QualityAssurance"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#followsRegulation">
+        <rdfs:domain rdf:resource="#ManufacturingProcess"/>
+        <rdfs:range rdf:resource="#Regulation"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#maintainedBy">
+        <rdfs:domain rdf:resource="#VehicleComponent"/>
+        <rdfs:range rdf:resource="#MaintenancePolicy"/>
+    </owl:ObjectProperty>
+
+    <!-- Individuals -->
+    <owl:NamedIndividual rdf:about="#AutomotiveSystem1">
+        <rdf:type rdf:resource="#AutomotiveSystem"/>
+        <hasComponent rdf:resource="#PetrolEngineV1"/>
+        <hasComponent rdf:resource="#DiscBrakeUnitA"/>
+    </owl:NamedIndividual>
+
+    <!-- Vehicle Components -->
+    <owl:NamedIndividual rdf:about="#PetrolEngineV1">
+        <rdf:type rdf:resource="#EngineSystem"/>
+        <usesProcess rdf:resource="#WeldingStage1"/>
+        <testedBy rdf:resource="#CrashTest1"/>
+        <maintainedBy rdf:resource="#MonthlyService"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#DiscBrakeUnitA">
+        <rdf:type rdf:resource="#BrakingSystem"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#CoilSuspensionX">
+        <rdf:type rdf:resource="#SuspensionSystem"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#BatteryControlUnit1">
+        <rdf:type rdf:resource="#ElectricalSystem"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#AutoTransmissionZ">
+        <rdf:type rdf:resource="#TransmissionSystem"/>
+    </owl:NamedIndividual>
+
+    <!-- Manufacturing -->
+    <owl:NamedIndividual rdf:about="#WeldingStage1">
+        <rdf:type rdf:resource="#Welding"/>
+        <followsRegulation rdf:resource="#ISO16949"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#PaintingStage1">
+        <rdf:type rdf:resource="#Painting"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#AssemblyLineA">
+        <rdf:type rdf:resource="#Assembly"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#InspectionPoint1">
+        <rdf:type rdf:resource="#Inspection"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#CastingUnit1">
+        <rdf:type rdf:resource="#Casting"/>
+    </owl:NamedIndividual>
+
+    <!-- Quality -->
+    <owl:NamedIndividual rdf:about="#CrashTest1">
+        <rdf:type rdf:resource="#CrashTesting"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#EmissionTest1">
+        <rdf:type rdf:resource="#EmissionTesting"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#DurabilityTest1">
+        <rdf:type rdf:resource="#DurabilityTesting"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#DefectScan1">
+        <rdf:type rdf:resource="#DefectDetection"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#ISOCheck1">
+        <rdf:type rdf:resource="#Certification"/>
+    </owl:NamedIndividual>
+
+    <!-- Regulation -->
+    <owl:NamedIndividual rdf:about="#ISO16949">
+        <rdf:type rdf:resource="#ManufacturingStandards"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Euro6">
+        <rdf:type rdf:resource="#EnvironmentalRegulations"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#SafetyRuleEU">
+        <rdf:type rdf:resource="#SafetyStandards"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#FactoryStandardA">
+        <rdf:type rdf:resource="#ManufacturingStandards"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#EnvPolicyX">
+        <rdf:type rdf:resource="#EnvironmentalRegulations"/>
+    </owl:NamedIndividual>
+
+    <!-- Maintenance -->
+    <owl:NamedIndividual rdf:about="#MonthlyService">
+        <rdf:type rdf:resource="#ScheduledMaintenance"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#BrakeRepair">
+        <rdf:type rdf:resource="#Repair"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#BatteryReplacement">
+        <rdf:type rdf:resource="#Replacement"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#SystemMonitoring">
+        <rdf:type rdf:resource="#Monitoring"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#TransmissionService">
+        <rdf:type rdf:resource="#ScheduledMaintenance"/>
+    </owl:NamedIndividual>
+
+</rdf:RDF>
